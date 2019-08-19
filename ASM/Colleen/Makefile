@@ -14,13 +14,13 @@ COLLEEN			= Colleen
 
 ################################################################################
 
-CC				= gcc
-CFLAGS			= -Wall -Wextra -Werror
+AS				= nasm
+ASFLAGS			= -f macho64 --prefix _ -Wall -Werror
 
 COLOR			= \033[31m
 FINCOLOR		= \033[0m
 
-SPY				= @
+SPY				=
 
 ################################################################################
 
@@ -29,10 +29,11 @@ OBJ_COLLEEN      = Colleen.o
 
 ################################################################################
 
-all: $(COLLEEN) $(COLLEEN) $(SULLY)
+all: $(COLLEEN)
 
-$(COLLEEN): $(OBJ_COLLEEN)
-	$(CC) $(CFLAGS) -o $@ $(OBJ_COLLEEN)
+$(COLLEEN): $(SRC_COLLEEN) Makefile
+	$(SPY) $(AS) $(ASFLAGS) -o Colleen.o Colleen.s
+	$(SPY) $(CC) -o $(COLLEEN) Colleen.o
 	$(SPY)echo "$(COLOR)$(COLLEEN)\t\t\t[OK]$(FINCOLOR)"
 
 clean:
