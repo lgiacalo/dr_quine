@@ -14,13 +14,13 @@ SULLY			= Sully
 
 ################################################################################
 
-CC				= gcc
-CFLAGS			= -Wall -Wextra -Werror
+AS				= nasm
+ASFLAGS			= -f macho64 --prefix _ -Wall -Werror
 
 COLOR			= \033[31m
 FINCOLOR		= \033[0m
 
-SPY				= @
+SPY				=
 
 ################################################################################
 
@@ -31,8 +31,9 @@ OBJ_SULLY      = Sully.o
 
 all: $(SULLY)
 
-$(SULLY): $(OBJ_SULLY)
-	$(CC) $(CFLAGS) -o $@ $(OBJ_SULLY)
+$(SULLY): $(SRC_SULLY) Makefile
+	$(SPY) $(AS) $(ASFLAGS) -o Sully.o Sully.s
+	$(SPY) $(CC) -o $(SULLY) Sully.o
 	$(SPY)echo "$(COLOR)$(SULLY)\t\t\t[OK]$(FINCOLOR)"
 
 clean:
@@ -41,7 +42,7 @@ clean:
 
 fclean: clean
 	$(RM) $(SULLY) $(SULLY)_*
-	$(SPY)echo "$(COLOR)$(SULLY)\t\t\tSuppression $(SULLY) + $(SULLY)_X.c$(FINCOLOR)"
+	$(SPY)echo "$(COLOR)$(SULLY)\t\t\tSuppression $(SULLY) + $(SULLY)_X$(FINCOLOR)"
 
 
 re: fclean all
