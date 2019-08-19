@@ -56,7 +56,7 @@ clean:
 	$(SPY)echo "$(COLOR)$(SULLY)\t\t\tSuppression *.o$(FINCOLOR)"
 
 fclean: clean
-	$(RM) $(GRACE) $(GRACE)_kid.c $(COLLEEN) $(SULLY) $(SULLY)_*.c
+	$(RM) $(GRACE) $(GRACE)_kid.c $(COLLEEN) $(SULLY) $(SULLY)_*
 	$(SPY)echo "$(COLOR)$(GRACE)\t\t\tSuppression $(GRACE) + $(GRACE)_kid.c$(FINCOLOR)"
 	$(SPY)echo "$(COLOR)$(COLLEEN)\t\t\tSuppression $(COLLEEN)$(FINCOLOR)"
 	$(SPY)echo "$(COLOR)$(SULLY)\t\t\tSuppression $(SULLY) + $(SULLY)_X.c$(FINCOLOR)"
