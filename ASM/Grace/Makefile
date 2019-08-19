@@ -14,13 +14,13 @@ GRACE			= Grace
 
 ################################################################################
 
-CC				= gcc
-CFLAGS			= -Wall -Wextra -Werror
+AS				= nasm
+ASFLAGS			= -f macho64 --prefix _ -Wall -Werror
 
 COLOR			= \033[31m
 FINCOLOR		= \033[0m
 
-SPY				= @
+SPY				=
 
 ################################################################################
 
@@ -31,8 +31,9 @@ OBJ_GRACE      = Grace.o
 
 all: $(GRACE)
 
-$(GRACE): $(OBJ_GRACE)
-	$(CC) $(CFLAGS) -o $@ $(OBJ_GRACE)
+$(GRACE): $(SRC_GRACE) Makefile
+	$(SPY) $(AS) $(ASFLAGS) -o Grace.o Grace.s
+	$(SPY) $(CC) -o $(GRACE) Grace.o
 	$(SPY)echo "$(COLOR)$(GRACE)\t\t\t[OK]$(FINCOLOR)"
 
 clean:
