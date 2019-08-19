@@ -29,7 +29,7 @@ OBJ_GRACE      = Grace.o
 
 ################################################################################
 
-all: $(COLLEEN) $(GRACE) $(SULLY)
+all: $(GRACE)
 
 $(GRACE): $(OBJ_GRACE)
 	$(CC) $(CFLAGS) -o $@ $(OBJ_GRACE)
