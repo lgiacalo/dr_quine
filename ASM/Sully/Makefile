@@ -37,7 +37,7 @@ $(SULLY): $(SRC_SULLY) Makefile
 	$(SPY)echo "$(COLOR)$(SULLY)\t\t\t[OK]$(FINCOLOR)"
 
 clean:
-	$(RM) $(OBJ_SULLY)
+	$(RM) $(OBJ_SULLY) $(SULLY)_*.o
 	$(SPY)echo "$(COLOR)$(SULLY)\t\t\tSuppression *.o$(FINCOLOR)"
 
 fclean: clean
