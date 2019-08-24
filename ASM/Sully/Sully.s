@@ -15,10 +15,10 @@ leavee:
 main:
 	push rbp
 	mov rbp, rsp
-	mov	rax, 5
-	sub	rax, 1
-	push rax
-	push rax
+	; mov	rax, 5
+	; sub	rax, 1
+	; push rax
+	; push rax
 
 	mov rax, 0x2000005
 	mov rdi, filename
@@ -27,12 +27,23 @@ main:
 	syscall
 
 	mov rdi, rax
+
+	mov	rax, 5
+	sub	rax, 1
+	push rdi
+	push rax
+
 	mov rsi, fmt
 	mov rdx, 10
 	mov rcx, 9
 	mov r8, 34
 	mov r9, fmt
 	call dprintf
+	pop rax
+	pop rdi
+
+	mov rax, 0x2000006
+	syscall
 
 	mov rdi, cmpo
 	call system
